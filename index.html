@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Consultum</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body background="images/background.png">
+
+<script>
+  var app = angular.module("consultumQuiz", []);
+  app.controller("quizController", function($scope) {
+    $scope.affinity = [0,0,0,0,0,0,0]; <!-- Mech 0, Elec 2, Geo 6, Civ 1, Soft 4, Comp 3, Spa 5 -->
+    $scope.done=0;
+    $scope.question = 0;
+    $scope.questions = ["What would you like to work with?",
+    "What environment do you like working in?",
+    "Do you like working in:",
+    "Do you prefer working with:",
+    "What would you like to study?",
+    "If given the opportunity to work on any of the projects below, which would you pick?"];
+    $scope.answers = [{answerOne:'Data', answerTwo:'Blueprints', answerThree:'Engineered Models'},
+    {answerOne:'Office', answerTwo:'Manufacturing Facility', answerThree:'Outdoors'},
+    {answerOne:'Teams', answerTwo:'Alone', answerThree:'Does not Matter'},
+    {answerOne:'Other Engineers', answerTwo:'Engineers and Other Professionals', answerThree:'Does not Matter'},
+    {answerOne:'Optimization', answerTwo:'Algorithms', answerThree:'Circuits'},
+    {answerOne:'Stadium', answerTwo:'Jet Thrusters', answerThree:'Bank Security System'}];
+    $scope.resultName = ["Mechanical Engineer", "Electrical Engineer", "Geomatics Engineer", "Civil Engineer", "Software Engineer", "Computer Engineer", "Space Engineer"]
+    $scope.result = ["Mechanical engineering is the discipline that applies the principles of engineering, physics,and materials science for the design,analysis,manufacturing, and maintenance of mechanical systems.The engineering field requires an understanding of core concepts including mechanics,kinematics, thermodynamics, materials science, structural analysis, and electricity.Mechanical engineers use these core principles along with tools like computer-aided design, and product lifecycle management to design and analyze manufacturing plants, industrial equipment and machinery, heating and cooling systems, transport systems, aircraft,watercraft, robotics, medical devices, weapons, and others.",
+    "Electrical engineering is a field of engineering that generally deals with the study and application of electricity, electronics, and electromagnetism. Electrical engineering is divided into a wide range of subfields including electronics,digital computers, power engineering, telecommunications, and control systems.Electrical engineers have made remarkable contributions to our world. Electrical Engineers helped invent the computer, DSL, cellular phones, microchips, and solar panels - to name just a few!",
+    "Geomatics Engineering is a rapidly developing engineering discipline that focuses on the gathering of spatial information (i.e. information that has a location).Geomatics engineers apply engineering principles to spatial information and implement relational data structures involving measurement sciences, thus using geomatics and acting as spatial information engineers.Geomatics is a field that incorporates several others such as the older field of land surveying along with many other aspects of spatial data management ranging from data science and cartography to geography.",
+    "Civil engineering is arguably the oldest engineering discipline. Civil engineering is a professional engineering discipline that deals with the design, construction, and maintenance of the physical and naturally built environment, including works like roads, bridges, canals, dams, and buildings.Civil engineering takes place in the public sector from municipal through to national governments, and in the private sector from individual homeowners through to international companies.Civil engineering is an exciting profession because at the end of the day you can see the results of your work, whether this is a completed bridge, a high-rise building, a subway station, or a hydroelectric dam.",
+    "Software engineering is the study and an application of engineering to the design,development, implementation and maintenance of software in a systematic method. Software engineers are involved in tasks such software design, software construction, and software testing.Many software engineers work as employees or contractors. Software engineers work with businesses, government agencies (civilian or military), and non-profit organizations and of course and most importantly as a software engineer you have the ability to work for yourself as a freelancer.",
+    "Computer engineering is a discipline that integrates several fields of electrical engineering and computer science required to develop computer hardware and software.Computer engineers are involved in many hardware and software aspects of computing, from the design of individual microcontrollers, microprocessors, personal computers, and supercomputers, to circuit design.Usual tasks involving computer engineers include writing software and firmware for embeddedmicrocontrollers, designing analog sensors, designing mixed signal circuit boards, and designing operating systems. Computer engineers are also suited for robotics research, which relies heavily on using digital systems to control and monitor electrical systems like motors, communications, and sensors.",
+    "A space engineer is a professional practitioner who uses scientific knowledge, mathematics, physics, astronomy, propulsion technology, materials science, structural analysis, manufacturing and ingenuity to solve practical problems in space and on planets.Space engineers design materials, structures and systems while considering the limitations imposed by practicality, regulation, safety, ethicality and cost.Space engineering covers all space-related activities; from ground operations to those required for Earth orbiting bodies and beyond to deep space missions, and also including astronomical systems and instruments.",
+    " "];
+    $scope.buttonOne = function () {
+      if ($scope.question == 0){
+        $scope.affinity[2] = $scope.affinity[2] + 1;
+        $scope.affinity[4] = $scope.affinity[4] + 1;
+        $scope.affinity[5] = $scope.affinity[5] + 1;
+      }
+      if ($scope.question == 1){
+        $scope.affinity[4] = $scope.affinity[4] + 1;
+        $scope.affinity[5] = $scope.affinity[5] + 1;
+        $scope.affinity[6] = $scope.affinity[6] + 1;
+      }
+      if ($scope.question == 2){
+        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[1] = $scope.affinity[1] + 1;
+        $scope.affinity[2] = $scope.affinity[2] + 1;
+        $scope.affinity[3] = $scope.affinity[3] + 1;
+        $scope.affinity[4] = $scope.affinity[4] + 1;
+        $scope.affinity[6] = $scope.affinity[6] + 1;
+      }
+      if ($scope.question == 3){
+        $scope.affinity[1] = $scope.affinity[1] + 1;
+        $scope.affinity[2] = $scope.affinity[2] + 1;
+        $scope.affinity[6] = $scope.affinity[6] + 1;
+      }
+      if ($scope.question == 4){
+        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[3] = $scope.affinity[3] + 1;
+        $scope.affinity[6] = $scope.affinity[6] + 1;
+      }
+      if ($scope.question == 5){
+        if ($scope.done == 0){
+          $scope.affinity[1] = $scope.affinity[1] + 1;
+          $scope.affinity[2] = $scope.affinity[2] + 1;
+          $scope.affinity[3] = $scope.affinity[3] +1;
+        }
+      }
+      if ($scope.question < 5){
+        $scope.question = $scope.question + 1;
+      } else{
+        $scope.done = 1;
+      }
+    }
+    $scope.buttonTwo = function () {
+      if ($scope.question == 0){
+        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[1] = $scope.affinity[1] + 1;
+        $scope.affinity[3] = $scope.affinity[3] + 1;
+      }
+      if ($scope.question == 1){
+        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[1] = $scope.affinity[1] + 1;
+        $scope.affinity[6] = $scope.affinity[6] +1;
+      }
+      if ($scope.question == 2){
+        $scope.affinity[1] = $scope.affinity[1] + 1;
+        $scope.affinity[4] = $scope.affinity[4] + 1;
+        $scope.affinity[5] = $scope.affinity[5] + 1;
+      }
+      if ($scope.question == 3){
+        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[3] = $scope.affinity[3] + 1;
+        $scope.affinity[4] = $scope.affinity[4] + 1;
+        $scope.affinity[5] = $scope.affinity[5] + 1;
+      }
+      if ($scope.question == 4){
+        $scope.affinity[2] = $scope.affinity[2] + 1;
+        $scope.affinity[4] = $scope.affinity[4] + 1;
+        $scope.affinity[5] = $scope.affinity[5] + 1;
+      }
+      if ($scope.question == 5){
+        if ($scope.done == 0){
+          $scope.affinity[0] = $scope.affinity[0] + 1;
+          $scope.affinity[6] = $scope.affinity[6] + 1;
+        }
+      }
+      if ($scope.question < 5){
+        $scope.question = $scope.question + 1;
+      } else{
+        $scope.done = 1;
+      }
+    }
+    $scope.buttonThree = function () {
+      if ($scope.question == 0){
+        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[6] = $scope.affinity[6] + 1;
+      }
+      if ($scope.question == 1){
+        $scope.affinity[2] = $scope.affinity[2] + 1;
+        $scope.affinity[3] = $scope.affinity[3] + 1;
+      }
+      if ($scope.question == 4){
+        $scope.affinity[1] = $scope.affinity[1] + 1;
+        $scope.affinity[5] = $scope.affinity[5] + 1;
+      }
+      if ($scope.question == 5){
+        if ($scope.done == 0){
+          $scope.affinity[1] = $scope.affinity[1] + 1;
+          $scope.affinity[4] = $scope.affinity[4] + 1;
+          $scope.affinity[5] = $scope.affinity[5] + 1;
+        }
+      }
+      if ($scope.question < 5){
+        $scope.question = $scope.question + 1;
+      } else{
+        $scope.done = 1;
+      }
+    }
+    $scope.getCurrentQuestion = function () {
+      return $scope.questions[$scope.question];
+    }
+    $scope.majorResultName = function () {
+      if ($scope.done == 1) {
+        $scope.largest=0;
+        for (i=0; i<=5;i++){
+          if ($scope.affinity[i] > $scope.largest) {
+            $scope.largest=i;
+          }
+        }
+        return $scope.resultName[$scope.largest];
+      }
+      return "";
+    }
+    $scope.majorResult = function () {
+      if ($scope.done == 1) {
+        $scope.largest= 0;
+        for (i=0; i<=5;i++){
+          if ($scope.affinity[i] > $scope.largest) {
+            $scope.largest=i;
+          }
+        }
+        return $scope.result[$scope.largest];
+      }
+      return "";
+    }
+  });
+</script>
+
+<div style="margin-top: 2%">
+  <center><h2><font color="#193441">Consultum</font></h2></center>
+  <center><img src="images/line.png"></img><center>
+</div>
+
+<div class="container" ng-app="consultumQuiz" ng-controller="quizController" align="justify">
+  <div class="row quiz">
+        <p></p>
+        <center><h5>{{getCurrentQuestion()}}</h5>
+        <button class="eleven columns" ng-click="buttonOne()">{{answers[question].answerOne}}</button> <br>
+        <button class="eleven columns" ng-click="buttonTwo()">{{answers[question].answerTwo}}</button> <br>
+        <button class="eleven columns" ng-click="buttonThree()">{{answers[question].answerThree}}</button></center>
+  </div>
+  <br>
+  <center><h3><em>{{majorResultName()}}</em></h3></center>
+  <h5>{{majorResult()}}</h5>
+</div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>
