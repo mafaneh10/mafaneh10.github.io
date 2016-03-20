@@ -59,7 +59,7 @@
     " "];
     $scope.buttonOne = function () {
       if ($scope.question == 0){
-        $scope.affinity[2] = $scope.affinity[2] + 1;
+        $scope.affinity[2] = $scope.affinity[2] + 2;
         $scope.affinity[4] = $scope.affinity[4] + 1;
         $scope.affinity[5] = $scope.affinity[5] + 1;
       }
@@ -106,7 +106,7 @@
         $scope.affinity[3] = $scope.affinity[3] + 1;
       }
       if ($scope.question == 1){
-        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[0] = $scope.affinity[0] + 2;
         $scope.affinity[1] = $scope.affinity[1] + 1;
         $scope.affinity[6] = $scope.affinity[6] +1;
       }
@@ -123,13 +123,13 @@
       }
       if ($scope.question == 4){
         $scope.affinity[2] = $scope.affinity[2] + 1;
-        $scope.affinity[4] = $scope.affinity[4] + 1;
+        $scope.affinity[4] = $scope.affinity[4] + 3;
         $scope.affinity[5] = $scope.affinity[5] + 1;
       }
       if ($scope.question == 5){
         if ($scope.done == 0){
           $scope.affinity[0] = $scope.affinity[0] + 1;
-          $scope.affinity[6] = $scope.affinity[6] + 1;
+          $scope.affinity[6] = $scope.affinity[6] + 3;
         }
       }
       if ($scope.question < 5){
@@ -140,7 +140,7 @@
     }
     $scope.buttonThree = function () {
       if ($scope.question == 0){
-        $scope.affinity[0] = $scope.affinity[0] + 1;
+        $scope.affinity[0] = $scope.affinity[0] + 2;
         $scope.affinity[6] = $scope.affinity[6] + 1;
       }
       if ($scope.question == 1){
@@ -149,7 +149,7 @@
       }
       if ($scope.question == 4){
         $scope.affinity[1] = $scope.affinity[1] + 1;
-        $scope.affinity[5] = $scope.affinity[5] + 1;
+        $scope.affinity[5] = $scope.affinity[5] + 3;
       }
       if ($scope.question == 5){
         if ($scope.done == 0){
@@ -191,6 +191,11 @@
       }
       return "";
     }
+    $scope.reset = function () {
+      $scope.affinity = [0,0,0,0,0,0,0];
+      $scope.done = 0;
+      $scope.question = 0;
+    }
   });
 </script>
 
@@ -206,6 +211,7 @@
         <button class="eleven columns" ng-click="buttonOne()">{{answers[question].answerOne}}</button> <br>
         <button class="eleven columns" ng-click="buttonTwo()">{{answers[question].answerTwo}}</button> <br>
         <button class="eleven columns" ng-click="buttonThree()">{{answers[question].answerThree}}</button></center>
+        <p style="padding-left: 4%"><button class="button-primary" ng-click="reset()">Restart</button></p>
   </div>
   <br>
   <center><h3><em>{{majorResultName()}}</em></h3></center>
